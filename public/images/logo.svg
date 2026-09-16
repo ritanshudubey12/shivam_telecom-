@@ -1,0 +1,27 @@
+<svg viewBox="0 0 460 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular badge background -->
+  <rect x="6" y="6" width="72" height="72" rx="36" fill="#EFF6FF" />
+  
+  <!-- Icon inside badge -->
+  <g transform="translate(18, 18) scale(0.046875)">
+    <!-- Waves -->
+    <g stroke="#29abe2" stroke-width="44" stroke-linecap="round">
+      <path d="M 334.7 471.9 A 265 265 0 0 1 334.7 78.1" />
+      <path d="M 376.8 405.6 A 188 188 0 0 1 376.8 144.4" />
+      <path d="M 647.2 144.4 A 188 188 0 0 1 647.2 405.6" />
+      <path d="M 689.3 78.1 A 265 265 0 0 1 689.3 471.9" />
+    </g>
+    <!-- Struts inside tower -->
+    <path d="M 474 548 L 565 668 L 433 798" stroke="#29abe2" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Tower legs -->
+    <path d="M 488 385 L 390 935" stroke="#8b61c2" stroke-width="48" stroke-linecap="round" />
+    <path d="M 536 385 L 634 935" stroke="#8b61c2" stroke-width="48" stroke-linecap="round" />
+    <!-- Antenna top ring & core -->
+    <circle cx="512" cy="275" r="111" stroke="#8b61c2" stroke-width="48" />
+    <circle cx="512" cy="275" r="42" fill="#ff751f" />
+  </g>
+
+  <!-- Typography matching ss2 -->
+  <text x="96" y="41" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="800" fill="#0B1E4D" letter-spacing="-0.025em">Shivam Telecom</text>
+  <text x="96" y="61" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600" fill="#64748B" letter-spacing="0.01em">Mobile Network Booster Specialists</text>
+</svg>
