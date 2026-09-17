@@ -5,8 +5,8 @@
  */
 
 export const siteConfig = {
-  businessName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "Shivam telecom",
-  legalName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "Shivam telecom",
+  businessName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "Shivam Telecom",
+  legalName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "Shivam Telecom",
   tagline: "Mobile Network Booster Specialists",
   shortDescription:
     "Professional mobile signal booster installation for homes, offices, and industrial spaces across Mumbai.",
