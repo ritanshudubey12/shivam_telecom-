@@ -11,7 +11,7 @@ export const siteConfig = {
   shortDescription:
     "Professional mobile signal booster installation for homes, offices, and industrial spaces across Mumbai.",
 
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.signalpromumbai.example",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://bestsignalboostermumbai.com",
 
   phone: process.env.NEXT_PUBLIC_PHONE || "+91-9372679079",
   phoneDisplay: (process.env.NEXT_PUBLIC_PHONE || "+91-9372679079").replace(
@@ -80,11 +80,11 @@ export const siteConfig = {
   gscVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
 
   seoDefaults: {
-    titleTemplate: "%s | " + (process.env.NEXT_PUBLIC_BUSINESS_NAME || "SignalPro Mumbai"),
+    titleTemplate: "%s | " + (process.env.NEXT_PUBLIC_BUSINESS_NAME || "Shivam Telecom"),
     defaultTitle:
-      "Mobile Network Booster in Mumbai | Signal Booster Installation",
+      "Mobile Network Booster in Mumbai | Shivam Telecom",
     defaultDescription:
-      "Get professional mobile network and signal booster solutions in Mumbai for homes, offices, commercial buildings and industrial spaces. Request a site survey.",
+      "Get professional mobile network and signal booster solutions in Mumbai for homes, offices, commercial buildings and industrial spaces by Shivam Telecom. Request a free site survey.",
     ogImage: "/images/og-default.svg",
   },
 } as const;
