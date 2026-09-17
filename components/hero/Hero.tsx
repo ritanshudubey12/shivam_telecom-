@@ -7,24 +7,24 @@ import { telLink, whatsappLink } from "@/lib/utils";
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#07122e] py-20 lg:py-28">
-      {/* Background Video with subtle/clear visibility */}
+      {/* Background Video, clear and high quality */}
       <div className="pointer-events-none absolute inset-0 -z-0 overflow-hidden">
         <video
-          className="h-full w-full object-cover blur-[0.5px] opacity-85"
+          className="h-full w-full object-cover"
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
         >
           <source
             src="/videos/Data_streams_moving_through_tunnel_20260916155512.mp4"
             type="video/mp4"
           />
         </video>
-        {/* Symmetrical cinematic overlays for centered contrast & readability */}
-        <div className="absolute inset-0 bg-[#07122e]/65" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07122e] via-transparent to-[#07122e]/75" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_#07122e_90%)] opacity-70" />
+        {/* Light overlays that keep the video visible while preserving text contrast */}
+        <div className="absolute inset-0 bg-[#07122e]/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07122e]/90 via-transparent to-[#07122e]/50" />
       </div>
 
       {/* Decorative dot pattern */}
