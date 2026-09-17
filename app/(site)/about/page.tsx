@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
-import { ShieldCheck, Wrench } from "lucide-react";
+import { ShieldCheck, Wrench, CheckCircle2, Phone, ArrowRight, Radio } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { SectionHeading } from "@/components/sections/SectionHeading";
@@ -9,6 +10,7 @@ import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
+import { telLink } from "@/lib/utils";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us",
@@ -107,6 +109,69 @@ export default function AboutPage() {
                 <p className="text-[13px] text-white/70">Hands-on setup &amp; site surveys</p>
               </figcaption>
             </figure>
+          </div>
+
+          {/* Shivam Telecom Flagship Brand Card */}
+          <div className="mt-14 sm:max-w-3xl sm:mx-auto">
+            <div className="relative overflow-hidden rounded-3xl border border-primary-200/70 bg-gradient-to-b from-white via-white to-primary-50/30 p-8 sm:p-10 shadow-2xl shadow-primary-950/10 backdrop-blur-md transition-all duration-300 hover:border-primary-300">
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary-600 via-signal to-primary-600" />
+
+              <div className="flex flex-col items-center text-center">
+                {/* Dedicated Illuminated Emblem for Logo */}
+                <div className="relative flex items-center justify-center">
+                  <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-primary-400/25 via-primary-300/15 to-signal/25 blur-2xl" />
+                  <div className="relative flex h-40 w-40 sm:h-48 sm:w-48 items-center justify-center rounded-3xl bg-white p-3 shadow-2xl ring-4 ring-primary-100/70 transition-transform duration-300 hover:scale-105">
+                    <Image
+                      src="/images/products/2.png"
+                      alt="Shivam Telecom"
+                      width={240}
+                      height={240}
+                      className="h-full w-full object-contain"
+                      priority
+                    />
+                  </div>
+                </div>
+
+                <h3 className="mt-6 font-display text-2xl font-black text-navy sm:text-3xl">
+                  {siteConfig.businessName}
+                </h3>
+                <p className="mt-1 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary-600">
+                  Engineering Leadership &amp; On-Site Telecom Operations
+                </p>
+
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-50 border border-primary-200/60 px-3.5 py-1 text-xs font-semibold text-primary-800 shadow-sm">
+                    <ShieldCheck className="h-3.5 w-3.5 text-primary-600" /> Authorized Telecom Partner
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200/60 px-3.5 py-1 text-xs font-semibold text-emerald-800 shadow-sm">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" /> Mumbai, Navi Mumbai &amp; Thane
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200/60 px-3.5 py-1 text-xs font-semibold text-amber-800 shadow-sm">
+                    <Radio className="h-3.5 w-3.5 text-amber-600" /> Jio • Airtel • Vi • BSNL
+                  </span>
+                </div>
+
+                <p className="mt-4 max-w-xl text-[14.5px] leading-relaxed text-muted-foreground">
+                  Under the hands-on leadership of <strong className="font-semibold text-navy">Ravendra Mishra</strong> and{" "}
+                  <strong className="font-semibold text-navy">Shivam Mishra</strong>, our specialized field engineers deliver certified, high-gain 4G &amp; 5G mobile signal booster solutions with detailed RF spectrum testing and clean in-building installations.
+                </p>
+
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 rounded-full bg-primary-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:bg-primary-700 hover:shadow-lg hover:scale-105"
+                  >
+                    Request Free Site Survey <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <a
+                    href={telLink(siteConfig.phone)}
+                    className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-2.5 text-sm font-semibold text-navy shadow-sm transition-all hover:bg-muted hover:border-primary-300"
+                  >
+                    <Phone className="h-4 w-4 text-primary-600" /> Call Directly: {siteConfig.phoneDisplay}
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

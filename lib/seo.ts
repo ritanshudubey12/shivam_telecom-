@@ -89,6 +89,7 @@ export function localBusinessSchema() {
       dayOfWeek: h.days,
       description: h.hours,
     })),
+    sameAs: Object.values(siteConfig.social).filter(Boolean),
   };
 }
 
@@ -100,6 +101,7 @@ export function organizationSchema() {
     name: siteConfig.businessName,
     url: siteConfig.url,
     logo: `${siteConfig.url}/images/logo.png`,
+    sameAs: Object.values(siteConfig.social).filter(Boolean),
     contactPoint: {
       "@type": "ContactPoint",
       telephone: siteConfig.phone,

@@ -64,8 +64,8 @@ export const siteConfig = {
   ],
 
   social: {
-    instagram: "",
-    facebook: "",
+    instagram: "https://www.instagram.com/shivammishra7998?stkn=czc1aWJ4ZjA5NDlw",
+    facebook: "https://www.facebook.com/share/1QPWhUPZKW/",
     linkedin: "",
     youtube: "",
   },

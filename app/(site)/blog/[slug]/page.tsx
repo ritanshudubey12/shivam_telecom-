@@ -7,12 +7,18 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Badge } from "@/components/ui/badge";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { getBlogPostBySlug, getRelatedBlogPosts } from "@/lib/data/blog";
+import { getBlogPostBySlug, getRelatedBlogPosts, getAllPublishedBlogSlugsForSitemap } from "@/lib/data/blog";
 import { buildMetadata, blogPostingSchema } from "@/lib/seo";
 import { sanitizeBlogHtml } from "@/lib/sanitize-html";
 import { formatDate, estimateReadingTime } from "@/lib/utils";
+import { BlogCardHeaderVisual } from "@/components/blog/BlogCardVisual";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const posts = await getAllPublishedBlogSlugsForSitemap();
+  return posts.map((p) => ({ slug: p.slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -77,9 +83,13 @@ export default async function BlogPostPage({
       <section className="bg-white py-12 lg:py-16">
         <div className="container grid gap-12 lg:grid-cols-3">
           <article className="max-w-2xl lg:col-span-2">
-            {post.featuredImage && (
+            {post.featuredImage ? (
               <div className="relative mb-8 h-64 w-full overflow-hidden rounded-2xl sm:h-80">
                 <Image src={post.featuredImage} alt={post.title} fill className="object-cover" />
+              </div>
+            ) : (
+              <div className="mb-8 overflow-hidden rounded-2xl shadow-md">
+                <BlogCardHeaderVisual slug={post.slug} size="lg" />
               </div>
             )}
             <div
