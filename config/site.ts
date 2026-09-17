@@ -5,21 +5,21 @@
  */
 
 export const siteConfig = {
-  businessName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "SignalPro Mumbai",
-  legalName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "SignalPro Mumbai",
+  businessName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "Shivam telecom",
+  legalName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "Shivam telecom",
   tagline: "Mobile Network Booster Specialists",
   shortDescription:
     "Professional mobile signal booster installation for homes, offices, and industrial spaces across Mumbai.",
 
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.signalpromumbai.example",
 
-  phone: process.env.NEXT_PUBLIC_PHONE || "+91-98765-43210",
-  phoneDisplay: (process.env.NEXT_PUBLIC_PHONE || "+91-98765-43210").replace(
+  phone: process.env.NEXT_PUBLIC_PHONE || "+91-9372679079",
+  phoneDisplay: (process.env.NEXT_PUBLIC_PHONE || "+91-9372679079").replace(
     "+91-",
     "+91 "
   ),
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "919876543210",
-  email: process.env.CONTACT_EMAIL || "hello@signalpromumbai.example",
+  email: process.env.CONTACT_EMAIL || "shivampayasi837@gmail.com",
 
   address: {
     streetAddress: "Office No. 462, Hanuman Nagar, Turbhe Naka, Thane – Belapur Rd",
