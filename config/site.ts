@@ -18,7 +18,7 @@ export const siteConfig = {
     "+91-",
     "+91 "
   ),
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "919876543210",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "919372679079",
   email: process.env.CONTACT_EMAIL || "shivampayasi837@gmail.com",
 
   address: {
