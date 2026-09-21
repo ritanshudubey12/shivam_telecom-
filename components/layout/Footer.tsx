@@ -114,18 +114,20 @@ export function Footer() {
               </li>
             ))}
             <li>
-              <Link href="/locations/mumbai" className="font-medium text-primary-300 hover:text-white">
-                View all →
+              <Link href="/locations" className="font-medium text-primary-300 hover:text-white">
+                View all areas →
               </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 className="font-display text-sm font-semibold text-white">Company</h3>
+          <h3 className="font-display text-sm font-semibold text-white">Company &amp; Guides</h3>
           <ul className="mt-3 space-y-2 text-sm">
             <li><Link href="/about" className="hover:text-white">About Us</Link></li>
             <li><Link href="/products" className="hover:text-white">Products</Link></li>
+            <li><Link href="/industries" className="hover:text-white">Industries</Link></li>
+            <li><Link href="/resources" className="hover:text-white">Resources &amp; Guides</Link></li>
             <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
             <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
           </ul>

@@ -59,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await getPublishedProducts();
   const productRoutes: MetadataRoute.Sitemap = products.map((p) => ({
     url: `${base}/products/${p.slug}`,
-    lastModified: p.updatedAt,
+    lastModified: p.updatedAt && p.updatedAt.getTime() > 0 ? p.updatedAt : now,
     changeFrequency: "monthly",
     priority: 0.6,
   }));
@@ -67,7 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPosts = await getAllPublishedBlogSlugsForSitemap();
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${base}/blog/${p.slug}`,
-    lastModified: p.updatedAt,
+    lastModified: p.updatedAt && p.updatedAt.getTime() > 0 ? p.updatedAt : now,
     changeFrequency: "weekly",
     priority: 0.6,
   }));

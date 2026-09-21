@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { getPublishedProducts } from "@/lib/data/products";
 import { buildMetadata } from "@/lib/seo";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = buildMetadata({
   title: "Mobile Signal Booster Products & Equipment",

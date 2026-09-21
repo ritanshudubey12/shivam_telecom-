@@ -186,6 +186,30 @@ export default async function BlogPage({
               )}
             </>
           )}
+
+          <div className="mt-16 rounded-2xl border border-border bg-muted/40 p-6 text-center sm:p-8">
+            <h3 className="font-display text-lg font-bold text-navy">
+              Looking for Technical Booster Guides?
+            </h3>
+            <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">
+              Explore our in-depth guides covering 4G vs 5G boosters, building signal propagation, and installation FAQs.
+            </p>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/resources"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700 hover:text-primary-800"
+              >
+                Browse Resources &amp; Guides <ArrowRight className="h-4 w-4" />
+              </Link>
+              <span className="text-muted-foreground/40 hidden sm:inline">•</span>
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700 hover:text-primary-800"
+              >
+                View Installation Services <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

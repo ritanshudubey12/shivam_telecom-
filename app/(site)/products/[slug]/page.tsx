@@ -8,10 +8,15 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Badge } from "@/components/ui/badge";
-import { getProductBySlug } from "@/lib/data/products";
+import { getProductBySlug, getPublishedProducts } from "@/lib/data/products";
 import { buildMetadata, productSchema } from "@/lib/seo";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const products = await getPublishedProducts();
+  return products.map((p) => ({ slug: p.slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -20,7 +25,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
-  if (!product) return {};
+  if (!product) {
+    return {
+      robots: { index: false, follow: false },
+    };
+  }
 
   return buildMetadata({
     title: product.name,

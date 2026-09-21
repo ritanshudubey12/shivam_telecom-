@@ -29,7 +29,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getBlogPostBySlug(slug);
-  if (!post) return {};
+  if (!post) {
+    return {
+      robots: { index: false, follow: false },
+    };
+  }
 
   return buildMetadata({
     title: post.seoTitle || post.title,
