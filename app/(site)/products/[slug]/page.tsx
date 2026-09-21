@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PackageCheck } from "lucide-react";
+import { PackageCheck, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -54,7 +55,7 @@ export default async function ProductDetailPage({
               <div className="relative mb-6 flex h-72 items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted/60">
                 <Image
                   src={product.imageUrl}
-                  alt={product.name}
+                  alt={`${product.name} - Mobile Signal Booster Equipment for Mumbai Buildings`}
                   fill
                   sizes="(min-width: 1024px) 66vw, 100vw"
                   className="object-contain p-8"
@@ -99,23 +100,47 @@ export default async function ProductDetailPage({
             </p>
           </div>
 
-          <aside className="rounded-2xl border border-border p-6">
-            {product.coverageArea && (
-              <div className="mb-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  Coverage Area
-                </p>
-                <p className="mt-1 text-sm font-medium text-navy">{product.coverageArea}</p>
-              </div>
-            )}
-            {product.propertyType && (
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  Suitable Property Type
-                </p>
-                <p className="mt-1 text-sm font-medium text-navy">{product.propertyType}</p>
-              </div>
-            )}
+          <aside className="space-y-4">
+            <div className="rounded-2xl border border-border p-6">
+              {product.coverageArea && (
+                <div className="mb-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Coverage Area
+                  </p>
+                  <p className="mt-1 text-sm font-medium text-navy">{product.coverageArea}</p>
+                </div>
+              )}
+              {product.propertyType && (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Suitable Property Type
+                  </p>
+                  <p className="mt-1 text-sm font-medium text-navy">{product.propertyType}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="rounded-2xl border border-border p-6">
+              <h3 className="font-display text-sm font-bold text-navy">Installation Services</h3>
+              <ul className="mt-3 space-y-2">
+                <li>
+                  <Link
+                    href="/services/mobile-signal-booster-installation"
+                    className="flex items-center gap-1.5 text-[13px] font-medium text-primary-700 hover:text-primary-800"
+                  >
+                    Professional Installation <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services/site-survey"
+                    className="flex items-center gap-1.5 text-[13px] font-medium text-primary-700 hover:text-primary-800"
+                  >
+                    Pre-Installation Site Survey <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </aside>
         </div>
       </section>

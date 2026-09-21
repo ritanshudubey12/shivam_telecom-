@@ -6,7 +6,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Industries We Serve | Mobile Signal Booster Solutions",
+  title: "Industries We Serve - Signal Booster Solutions",
   description:
     "Mobile signal booster solutions tailored for homes, offices, factories, warehouses, hotels, hospitals, retail stores and institutions across Mumbai.",
   path: "/industries",

@@ -11,7 +11,11 @@ export const siteConfig = {
   shortDescription:
     "Professional mobile signal booster installation for homes, offices, and industrial spaces across Mumbai.",
 
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://bestsignalboostermumbai.com",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL &&
+    process.env.NEXT_PUBLIC_SITE_URL !== "https://www.example.com"
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : "https://bestsignalboostermumbai.com",
 
   phone: process.env.NEXT_PUBLIC_PHONE || "+91-9372679079",
   phoneDisplay: (process.env.NEXT_PUBLIC_PHONE || "+91-9372679079").replace(

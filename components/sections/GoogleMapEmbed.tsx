@@ -33,7 +33,7 @@ export function GoogleMapEmbed() {
               <div className="relative flex h-36 w-36 sm:h-44 sm:w-44 items-center justify-center rounded-2xl bg-white p-3 shadow-md ring-2 ring-primary-100/70 transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src="/images/products/2.png"
-                  alt="Shivam Telecom Official Seal"
+                  alt="Shivam Telecom official certified mobile network booster solutions seal"
                   width={200}
                   height={200}
                   className="h-full w-full object-contain"
@@ -66,7 +66,7 @@ export function GoogleMapEmbed() {
               <div className="relative flex h-36 w-full max-w-[280px] sm:h-44 sm:max-w-[320px] items-center justify-center rounded-2xl bg-white p-3 shadow-md ring-2 ring-primary-100/70 transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src="/images/products/3.png"
-                  alt="Shivam Telecom Landscape Brand"
+                  alt="Shivam Telecom Vashi Navi Mumbai service center and store banner"
                   width={280}
                   height={200}
                   className="h-full w-full object-contain"

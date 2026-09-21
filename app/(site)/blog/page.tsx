@@ -14,7 +14,7 @@ import { BlogCardHeaderVisual } from "@/components/blog/BlogCardVisual";
 export const revalidate = 60;
 
 export const metadata: Metadata = buildMetadata({
-  title: "Blog | Mobile Signal Booster Tips & Guides",
+  title: "Mobile Signal Booster Blog & Expert Guides",
   description:
     "Expert technical guides, troubleshooting advice, and Mumbai in-building mobile coverage solutions for homes, corporate offices, and industrial units.",
   path: "/blog",

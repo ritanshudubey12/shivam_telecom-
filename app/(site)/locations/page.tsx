@@ -8,7 +8,7 @@ import { locations } from "@/config/locations";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Areas We Serve | Mobile Signal Booster Across Mumbai",
+  title: "Areas We Serve Across Mumbai, Navi Mumbai & Thane",
   description:
     "Mobile network booster installation across Mumbai, Navi Mumbai and Thane — Andheri, Bandra, Powai, Thane, Vashi and more.",
   path: "/locations",

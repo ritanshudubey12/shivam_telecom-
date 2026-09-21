@@ -16,7 +16,7 @@ import { siteConfig } from "@/config/site";
 import { faqs } from "@/config/content";
 
 export const metadata: Metadata = buildMetadata({
-  title: siteConfig.seoDefaults.defaultTitle,
+  title: "Mobile Network Booster in Mumbai",
   description: siteConfig.seoDefaults.defaultDescription,
   path: "/",
 });

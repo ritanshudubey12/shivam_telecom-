@@ -9,6 +9,18 @@ interface BuildMetadataOptions {
   noIndex?: boolean;
 }
 
+/**
+ * Strips duplicate company suffix if child page already has it,
+ * preventing '... | Shivam Telecom | Shivam Telecom' when template is applied.
+ */
+function normalizePageTitle(rawTitle: string): string {
+  const brandSuffix = ` | ${siteConfig.businessName}`;
+  if (rawTitle.endsWith(brandSuffix)) {
+    return rawTitle.slice(0, -brandSuffix.length).trim();
+  }
+  return rawTitle;
+}
+
 export function buildMetadata({
   title,
   description,
@@ -16,30 +28,42 @@ export function buildMetadata({
   image,
   noIndex,
 }: BuildMetadataOptions): Metadata {
-  const url = new URL(path, siteConfig.url).toString();
-  const ogImage = image ?? siteConfig.seoDefaults.ogImage;
+  const cleanPath = path.split("?")[0] || "/";
+  const base = siteConfig.url.replace(/\/$/, "");
+  const canonicalUrl =
+    cleanPath === "/"
+      ? base
+      : `${base}${cleanPath.startsWith("/") ? "" : "/"}${cleanPath}`;
+
+  const resolvedOgImage = image
+    ? image.startsWith("http")
+      ? image
+      : `${base}${image.startsWith("/") ? "" : "/"}${image}`
+    : `${base}${siteConfig.seoDefaults.ogImage.startsWith("/") ? "" : "/"}${siteConfig.seoDefaults.ogImage}`;
+
+  const safeTitle = normalizePageTitle(title);
 
   return {
-    title,
+    title: safeTitle,
     description,
-    alternates: { canonical: url },
+    alternates: { canonical: canonicalUrl },
     robots: noIndex
       ? { index: false, follow: false }
-      : { index: true, follow: true },
+      : { index: true, follow: true, googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 } },
     openGraph: {
-      title,
+      title: safeTitle,
       description,
-      url,
+      url: canonicalUrl,
       siteName: siteConfig.businessName,
-      images: [{ url: ogImage }],
+      images: [{ url: resolvedOgImage, alt: `${safeTitle} - ${siteConfig.businessName}` }],
       locale: "en_IN",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: safeTitle,
       description,
-      images: [ogImage],
+      images: [resolvedOgImage],
     },
   };
 }
@@ -50,6 +74,7 @@ export interface BreadcrumbItem {
 }
 
 export function breadcrumbSchema(items: BreadcrumbItem[]) {
+  const base = siteConfig.url.replace(/\/$/, "");
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -57,21 +82,24 @@ export function breadcrumbSchema(items: BreadcrumbItem[]) {
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: new URL(item.path, siteConfig.url).toString(),
+      item: item.path === "/" ? `${base}/` : `${base}${item.path.startsWith("/") ? "" : "/"}${item.path}`,
     })),
   };
 }
 
 export function localBusinessSchema() {
+  const base = siteConfig.url.replace(/\/$/, "");
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": `${siteConfig.url}/#business`,
+    "@id": `${base}/#business`,
     name: siteConfig.businessName,
     description: siteConfig.shortDescription,
-    url: siteConfig.url,
+    url: `${base}/`,
     telephone: siteConfig.phone,
     email: siteConfig.email,
+    priceRange: "₹₹",
+    image: `${base}/images/logo.png`,
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.streetAddress,
@@ -80,27 +108,50 @@ export function localBusinessSchema() {
       postalCode: siteConfig.address.postalCode,
       addressCountry: siteConfig.address.addressCountry,
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "19.0760",
+      longitude: "72.8777",
+    },
     areaServed: siteConfig.serviceArea.map((area) => ({
       "@type": "City",
       name: area,
     })),
-    openingHoursSpecification: siteConfig.businessHours.map((h) => ({
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: h.days,
-      description: h.hours,
-    })),
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "09:30",
+        closes: "19:30",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Sunday"],
+        opens: "00:00",
+        closes: "00:00",
+        description: "By appointment",
+      },
+    ],
     sameAs: Object.values(siteConfig.social).filter(Boolean),
   };
 }
 
 export function organizationSchema() {
+  const base = siteConfig.url.replace(/\/$/, "");
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": `${siteConfig.url}/#organization`,
+    "@id": `${base}/#organization`,
     name: siteConfig.businessName,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/images/logo.png`,
+    url: `${base}/`,
+    logo: `${base}/images/logo.png`,
     sameAs: Object.values(siteConfig.social).filter(Boolean),
     contactPoint: {
       "@type": "ContactPoint",
@@ -117,6 +168,8 @@ export function serviceSchema(service: {
   description: string;
   path: string;
 }) {
+  const base = siteConfig.url.replace(/\/$/, "");
+  const serviceUrl = service.path.startsWith("/") ? `${base}${service.path}` : `${base}/${service.path}`;
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -126,13 +179,13 @@ export function serviceSchema(service: {
     provider: {
       "@type": "LocalBusiness",
       name: siteConfig.businessName,
-      "@id": `${siteConfig.url}/#business`,
+      "@id": `${base}/#business`,
     },
     areaServed: {
       "@type": "City",
       name: "Mumbai",
     },
-    url: new URL(service.path, siteConfig.url).toString(),
+    url: serviceUrl,
   };
 }
 
@@ -160,12 +213,20 @@ export function blogPostingSchema(post: {
   updatedAt: Date;
   authorName?: string | null;
 }) {
+  const base = siteConfig.url.replace(/\/$/, "");
+  const postUrl = post.path.startsWith("/") ? `${base}${post.path}` : `${base}/${post.path}`;
+  const resolvedImage = post.image
+    ? post.image.startsWith("http")
+      ? post.image
+      : `${base}${post.image.startsWith("/") ? "" : "/"}${post.image}`
+    : `${base}/images/logo.png`;
+
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
-    image: post.image ?? undefined,
+    image: resolvedImage,
     datePublished: post.publishedAt.toISOString(),
     dateModified: post.updatedAt.toISOString(),
     author: {
@@ -177,10 +238,10 @@ export function blogPostingSchema(post: {
       name: siteConfig.businessName,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/images/logo.png`,
+        url: `${base}/images/logo.png`,
       },
     },
-    mainEntityOfPage: new URL(post.path, siteConfig.url).toString(),
+    mainEntityOfPage: postUrl,
   };
 }
 
@@ -190,13 +251,21 @@ export function productSchema(product: {
   imageUrl?: string | null;
   path: string;
 }) {
+  const base = siteConfig.url.replace(/\/$/, "");
+  const productUrl = product.path.startsWith("/") ? `${base}${product.path}` : `${base}/${product.path}`;
+  const resolvedImage = product.imageUrl
+    ? product.imageUrl.startsWith("http")
+      ? product.imageUrl
+      : `${base}${product.imageUrl.startsWith("/") ? "" : "/"}${product.imageUrl}`
+    : undefined;
+
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: product.imageUrl ?? undefined,
-    url: new URL(product.path, siteConfig.url).toString(),
+    image: resolvedImage,
+    url: productUrl,
     brand: {
       "@type": "Brand",
       name: siteConfig.businessName,

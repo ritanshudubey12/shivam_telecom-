@@ -123,7 +123,7 @@ export default function AboutPage() {
                   <div className="relative flex h-40 w-40 sm:h-48 sm:w-48 items-center justify-center rounded-3xl bg-white p-3 shadow-2xl ring-4 ring-primary-100/70 transition-transform duration-300 hover:scale-105">
                     <Image
                       src="/images/products/2.png"
-                      alt="Shivam Telecom"
+                      alt="Shivam Telecom official mobile network booster service seal"
                       width={240}
                       height={240}
                       className="h-full w-full object-contain"

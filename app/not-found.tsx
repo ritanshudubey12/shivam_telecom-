@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SignalHigh, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (
@@ -22,6 +31,9 @@ export default function NotFound() {
             <Link href="/">
               Back to Home <ArrowRight className="h-4 w-4" />
             </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/services">View Services</Link>
           </Button>
           <Button asChild variant="secondary">
             <Link href="/contact">Contact Us</Link>

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { AlertTriangle, ArrowRight } from "lucide-react";
+import { AlertTriangle, ArrowRight, MapPin } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { industries, industryIcons, services } from "@/config/content";
+import { locations } from "@/config/locations";
 import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -91,24 +92,59 @@ export default async function IndustryDetailPage({
                 </Link>
               ))}
             </div>
+            <div className="mt-10 rounded-2xl border border-border bg-muted/40 p-6">
+              <h3 className="font-display text-base font-bold text-navy">Service Areas for {industry.name}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                We install signal booster systems for {industry.name.toLowerCase()} across major Mumbai commercial and residential hubs:
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {locations.slice(0, 8).map((loc) => (
+                  <Link
+                    key={loc.slug}
+                    href={`/locations/${loc.slug}`}
+                    className="rounded-full border border-border bg-white px-3 py-1.5 text-[13px] font-medium text-navy hover:border-primary-300 hover:text-primary-700"
+                  >
+                    {loc.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <aside className="rounded-2xl border border-border p-6">
-            <h3 className="font-display text-sm font-bold text-navy">All Industries</h3>
-            <ul className="mt-4 space-y-2.5">
-              {industries
-                .filter((i) => i.slug !== industry.slug)
-                .map((i) => (
-                  <li key={i.slug}>
+          <aside className="space-y-4">
+            <div className="rounded-2xl border border-border p-6">
+              <h3 className="font-display text-sm font-bold text-navy">All Industries</h3>
+              <ul className="mt-4 space-y-2.5">
+                {industries
+                  .filter((i) => i.slug !== industry.slug)
+                  .map((i) => (
+                    <li key={i.slug}>
+                      <Link
+                        href={`/industries/${i.slug}`}
+                        className="text-[13.5px] font-medium text-muted-foreground hover:text-primary-700"
+                      >
+                        {i.name}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-border p-6">
+              <h3 className="font-display text-sm font-bold text-navy">Key Service Hubs</h3>
+              <ul className="mt-4 space-y-2">
+                {locations.slice(0, 5).map((loc) => (
+                  <li key={loc.slug}>
                     <Link
-                      href={`/industries/${i.slug}`}
-                      className="text-[13.5px] font-medium text-muted-foreground hover:text-primary-700"
+                      href={`/locations/${loc.slug}`}
+                      className="flex items-center gap-1.5 text-[13px] font-medium text-primary-700 hover:text-primary-800"
                     >
-                      {i.name}
+                      <MapPin className="h-3 w-3" /> {loc.name}
                     </Link>
                   </li>
                 ))}
-            </ul>
+              </ul>
+            </div>
           </aside>
         </div>
       </section>

@@ -17,7 +17,7 @@ export const locations: LocationContent[] = [
     slug: "mumbai",
     name: "Mumbai",
     region: "Mumbai",
-    metaTitle: "Mobile Network Booster in Mumbai | Signal Booster Installation",
+    metaTitle: "Mobile Network Booster in Mumbai",
     metaDescription:
       "Mobile network and signal booster installation across Mumbai — homes, offices, commercial buildings and industrial spaces. Request a site survey.",
     intro:
@@ -38,7 +38,7 @@ export const locations: LocationContent[] = [
     slug: "andheri",
     name: "Andheri",
     region: "Mumbai",
-    metaTitle: "Mobile Signal Booster in Andheri, Mumbai | Installation Service",
+    metaTitle: "Mobile Signal Booster in Andheri",
     metaDescription:
       "Signal booster installation in Andheri for homes, offices and commercial spaces near the business and media hub of Mumbai's western suburbs.",
     intro:
@@ -59,7 +59,7 @@ export const locations: LocationContent[] = [
     slug: "bandra",
     name: "Bandra",
     region: "Mumbai",
-    metaTitle: "Mobile Signal Booster in Bandra, Mumbai | Installation Service",
+    metaTitle: "Mobile Signal Booster in Bandra",
     metaDescription:
       "Signal booster installation in Bandra for homes, offices and retail spaces across Bandra West and Bandra East.",
     intro:
@@ -79,7 +79,7 @@ export const locations: LocationContent[] = [
     slug: "borivali",
     name: "Borivali",
     region: "Mumbai",
-    metaTitle: "Mobile Signal Booster in Borivali, Mumbai | Installation Service",
+    metaTitle: "Mobile Signal Booster in Borivali",
     metaDescription:
       "Signal booster installation in Borivali for residential societies and commercial spaces in Mumbai's northern suburbs.",
     intro:
@@ -99,7 +99,7 @@ export const locations: LocationContent[] = [
     slug: "powai",
     name: "Powai",
     region: "Mumbai",
-    metaTitle: "Mobile Signal Booster in Powai, Mumbai | Installation Service",
+    metaTitle: "Mobile Signal Booster in Powai",
     metaDescription:
       "Signal booster installation in Powai for IT offices, business parks and residential towers around Powai Lake.",
     intro:
@@ -119,7 +119,7 @@ export const locations: LocationContent[] = [
     slug: "goregaon",
     name: "Goregaon",
     region: "Mumbai",
-    metaTitle: "Mobile Signal Booster in Goregaon, Mumbai | Installation Service",
+    metaTitle: "Mobile Signal Booster in Goregaon",
     metaDescription:
       "Signal booster installation in Goregaon for offices, exhibition spaces and residential buildings in Mumbai's western suburbs.",
     intro:
@@ -139,7 +139,7 @@ export const locations: LocationContent[] = [
     slug: "malad",
     name: "Malad",
     region: "Mumbai",
-    metaTitle: "Mobile Signal Booster in Malad, Mumbai | Installation Service",
+    metaTitle: "Mobile Signal Booster in Malad",
     metaDescription:
       "Signal booster installation in Malad for residential complexes and commercial establishments across Malad East and West.",
     intro:
@@ -159,7 +159,7 @@ export const locations: LocationContent[] = [
     slug: "thane",
     name: "Thane",
     region: "Thane",
-    metaTitle: "Mobile Signal Booster in Thane | Installation Service",
+    metaTitle: "Mobile Signal Booster in Thane",
     metaDescription:
       "Signal booster installation in Thane for residential townships, offices and industrial units across the city.",
     intro:
@@ -179,7 +179,7 @@ export const locations: LocationContent[] = [
     slug: "navi-mumbai",
     name: "Navi Mumbai",
     region: "Navi Mumbai",
-    metaTitle: "Mobile Signal Booster in Navi Mumbai | Installation Service",
+    metaTitle: "Mobile Signal Booster in Navi Mumbai",
     metaDescription:
       "Signal booster installation across Navi Mumbai's planned residential and commercial nodes including Vashi, Nerul and Panvel.",
     intro:
@@ -199,7 +199,7 @@ export const locations: LocationContent[] = [
     slug: "vashi",
     name: "Vashi",
     region: "Navi Mumbai",
-    metaTitle: "Mobile Signal Booster in Vashi, Navi Mumbai | Installation Service",
+    metaTitle: "Mobile Signal Booster in Vashi, Navi Mumbai",
     metaDescription:
       "Signal booster installation in Vashi for homes, offices and commercial establishments in Navi Mumbai's commercial hub.",
     intro:
@@ -219,7 +219,7 @@ export const locations: LocationContent[] = [
     slug: "panvel",
     name: "Panvel",
     region: "Navi Mumbai",
-    metaTitle: "Mobile Signal Booster in Panvel | Installation Service",
+    metaTitle: "Mobile Signal Booster in Panvel",
     metaDescription:
       "Signal booster installation in Panvel for residential developments, warehouses and industrial units in Mumbai's expanding southern node.",
     intro:

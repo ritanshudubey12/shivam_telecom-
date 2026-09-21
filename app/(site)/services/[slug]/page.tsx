@@ -6,8 +6,9 @@ import { PageHero } from "@/components/sections/PageHero";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { Badge } from "@/components/ui/badge";
-import { services, serviceIcons } from "@/config/content";
+import { services, serviceIcons, industries, faqs } from "@/config/content";
 import { locations } from "@/config/locations";
 import { buildMetadata, serviceSchema } from "@/lib/seo";
 
@@ -47,6 +48,15 @@ export default async function ServiceDetailPage({
   const Icon = serviceIcons[service.icon];
   const relatedServices = services.filter((s) => s.slug !== service.slug).slice(0, 3);
   const relatedLocations = locations.slice(0, 6);
+  const matchedIndustries = industries.filter((i) =>
+    i.relevantServiceSlugs.includes(service.slug) ||
+    service.suitableFor.some((sf) => i.name.toLowerCase().includes(sf.toLowerCase()) || sf.toLowerCase().includes(i.name.toLowerCase()))
+  );
+  const serviceFaqs = faqs.filter((f) =>
+    f.question.toLowerCase().includes("booster") ||
+    f.question.toLowerCase().includes("installation") ||
+    f.question.toLowerCase().includes("survey")
+  ).slice(0, 4);
 
   return (
     <>
@@ -79,17 +89,26 @@ export default async function ServiceDetailPage({
               ))}
             </ul>
 
-            <h3 className="mt-8 font-display text-lg font-bold text-navy">Suitable For</h3>
+            <h3 className="mt-8 font-display text-lg font-bold text-navy">Suitable Property Types</h3>
             <div className="mt-3 flex flex-wrap gap-2">
-              {service.suitableFor.map((s) => (
-                <Badge key={s} variant="outline">{s}</Badge>
-              ))}
+              {service.suitableFor.map((s) => {
+                const match = industries.find((i) => i.name.toLowerCase().includes(s.toLowerCase()) || s.toLowerCase().includes(i.name.toLowerCase()));
+                return match ? (
+                  <Link key={s} href={`/industries/${match.slug}`}>
+                    <Badge variant="outline" className="hover:border-primary-400 hover:text-primary-700 transition-colors">
+                      {s} →
+                    </Badge>
+                  </Link>
+                ) : (
+                  <Badge key={s} variant="outline">{s}</Badge>
+                );
+              })}
             </div>
 
             <div className="mt-10 rounded-2xl border border-border bg-muted/40 p-6">
-              <h3 className="font-display text-base font-bold text-navy">Available Across Mumbai</h3>
+              <h3 className="font-display text-base font-bold text-navy">Available Across Mumbai &amp; Navi Mumbai</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                We provide {service.name.toLowerCase()} across these areas:
+                We provide professional {service.name.toLowerCase()} across these areas:
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {relatedLocations.map((loc) => (
@@ -121,9 +140,30 @@ export default async function ServiceDetailPage({
                 ))}
               </ul>
             </div>
+
+            {matchedIndustries.length > 0 && (
+              <div className="rounded-2xl border border-border p-6">
+                <h3 className="font-display text-sm font-bold text-navy">Industry Coverage</h3>
+                <ul className="mt-4 space-y-2.5">
+                  {matchedIndustries.slice(0, 4).map((ind) => (
+                    <li key={ind.slug}>
+                      <Link
+                        href={`/industries/${ind.slug}`}
+                        className="flex items-center justify-between text-[13.5px] font-medium text-navy hover:text-primary-700"
+                      >
+                        <span>{ind.name}</span>
+                        <ArrowRight className="h-3 w-3 text-muted-foreground" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </aside>
         </div>
       </section>
+
+      <FaqSection items={serviceFaqs} title={`${service.name} FAQs`} />
 
       <ContactSection source="WEBSITE_SERVICE_PAGE" />
 

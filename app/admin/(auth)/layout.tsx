@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import { Signal } from "lucide-react";
 import { siteConfig } from "@/config/site";
+
+export const metadata: Metadata = {
+  title: "Admin Portal",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function AdminAuthLayout({ children }: { children: React.ReactNode }) {
   return (

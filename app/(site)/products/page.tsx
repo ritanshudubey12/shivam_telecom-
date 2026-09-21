@@ -13,7 +13,7 @@ import { buildMetadata } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Mobile Signal Booster Products | Mumbai",
+  title: "Mobile Signal Booster Products & Equipment",
   description:
     "Browse mobile signal booster system categories for homes, offices and industrial spaces. Final recommendation is confirmed after a site survey.",
   path: "/products",
@@ -45,7 +45,7 @@ export default async function ProductsPage() {
                     {product.imageUrl ? (
                       <Image
                         src={product.imageUrl}
-                        alt={product.name}
+                        alt={`${product.name} - Mobile Signal Booster Equipment`}
                         fill
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="object-contain p-6"

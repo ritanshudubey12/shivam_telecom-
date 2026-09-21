@@ -8,7 +8,7 @@ import { resourceArticles } from "@/config/resources";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Resources | Mobile Signal Booster Guides",
+  title: "Resources & Technical Guides for Signal Boosters",
   description:
     "Practical guides on mobile signal boosters — how they work, 4G vs 5G, and solutions for homes, offices and industrial spaces in Mumbai.",
   path: "/resources",

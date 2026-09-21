@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Calendar, Clock, User } from "lucide-react";
+import { ArrowRight, Calendar, Clock, User, MapPin } from "lucide-react";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Badge } from "@/components/ui/badge";
@@ -12,6 +12,8 @@ import { buildMetadata, blogPostingSchema } from "@/lib/seo";
 import { sanitizeBlogHtml } from "@/lib/sanitize-html";
 import { formatDate, estimateReadingTime } from "@/lib/utils";
 import { BlogCardHeaderVisual } from "@/components/blog/BlogCardVisual";
+import { services } from "@/config/content";
+import { locations } from "@/config/locations";
 
 export const revalidate = 60;
 
@@ -127,6 +129,39 @@ export default async function BlogPostPage({
                 ))}
               </ul>
             </div>
+            <div className="rounded-2xl border border-border p-6">
+              <h3 className="font-display text-sm font-bold text-navy">Installation Services</h3>
+              <ul className="mt-3 space-y-2">
+                {services.slice(0, 4).map((s) => (
+                  <li key={s.slug}>
+                    <Link
+                      href={`/services/${s.slug}`}
+                      className="flex items-center justify-between text-[13px] font-medium text-navy hover:text-primary-700"
+                    >
+                      <span>{s.name}</span>
+                      <ArrowRight className="h-3 w-3 text-muted-foreground" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-border p-6">
+              <h3 className="font-display text-sm font-bold text-navy">Service Areas</h3>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {locations.slice(0, 6).map((loc) => (
+                  <Link
+                    key={loc.slug}
+                    href={`/locations/${loc.slug}`}
+                    className="inline-flex items-center gap-1 rounded-full border border-border bg-white px-2.5 py-1 text-xs font-medium text-navy hover:border-primary-300 hover:text-primary-700"
+                  >
+                    <MapPin className="h-2.5 w-2.5 text-primary-600" />
+                    {loc.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             <div className="rounded-2xl border border-border p-6">
               <h3 className="font-display text-sm font-bold text-navy">Need a Site Survey?</h3>
               <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
