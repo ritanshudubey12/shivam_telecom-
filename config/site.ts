@@ -81,7 +81,8 @@ export const siteConfig = {
 
   gaId: process.env.NEXT_PUBLIC_GA_ID || "",
   gtmId: process.env.NEXT_PUBLIC_GTM_ID || "",
-  gscVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
+  gscVerification:
+    process.env.NEXT_PUBLIC_GSC_VERIFICATION || "google58705fb349cb4eea",
 
   seoDefaults: {
     titleTemplate: "%s | " + (process.env.NEXT_PUBLIC_BUSINESS_NAME || "Shivam Telecom"),
